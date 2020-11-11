@@ -3,11 +3,11 @@
   "license": "MIT",
   "engines": {
     "node": "14.8.0",
-    "yarn": "1.22.4"
+    "npm": "6.14.8"
   },
   "scripts": {
-    "build": "yarn --cwd client install && yarn --cwd client build",
+    "build": "yarn --cwd client install && npm --cwd client build",
     "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "yarn build && yarn deploy"
+    "heroku-postbuild": "npm build && npm deploy"
   }
 }
