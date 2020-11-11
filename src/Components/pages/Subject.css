@@ -1,0 +1,22 @@
+
+.container {
+  
+  display: grid;
+  justify-content: center;
+  
+}
+
+.select {
+  position: relative;
+  top: 20px;
+}
+
+.subjects-list{
+    height: 30px;
+    width: 500px;
+ }
+
+ .subjects-list option {
+  font-weight:normal;
+ }
+
