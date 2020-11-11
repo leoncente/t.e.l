@@ -6,8 +6,6 @@
     "npm": "6.14.8"
   },
   "scripts": {
-    "build": "yarn --cwd client install && npm --cwd client build",
-    "deploy": "cp -a client/build/. public/",
-    "heroku-postbuild": "npm build && npm deploy"
+    "build": "react-scripts build"
   }
 }
