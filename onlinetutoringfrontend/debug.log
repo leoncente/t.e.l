@@ -1,0 +1,4 @@
+[1025/213611.015:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1102/115850.288:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
+[1102/193814.503:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Anahi Callejas\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\01fa6608-41e8-45af-81d3-b8c63c1aff43: El sistema no puede encontrar la ruta especificada. (0x3)
+[1103/181456.532:ERROR:directory_reader_win.cc(43)] FindFirstFile: El sistema no puede encontrar la ruta especificada. (0x3)
