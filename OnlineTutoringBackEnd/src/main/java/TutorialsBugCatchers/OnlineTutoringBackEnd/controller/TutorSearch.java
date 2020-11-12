@@ -25,18 +25,14 @@ import java.sql.Statement;
 public class TutorSearch {
 
     //Allows localhost:3000 to GET and POST
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     //Sets url to localhost:8080/API/materias
     @GetMapping("/materias")
     //Returns a list of all subjects created in the DB
     public List<Subject> getSubjects(){
         //url for TEL_DB DataBase
-        String url = "jdbc:postgresql://127.0.0.1/TEL_DB";
-        Properties props = new Properties();
-        //Sets the DB user
-        props.setProperty("user","postgres");
-        //Sets the DB psssword
-        props.setProperty("password","postgres");
+        String url = "jdbc:postgresql://ingsoft.coegv0vravum.us-east-2.rds.amazonaws.com:5432/TEL_DB";
+        url += "?user=" + "postgres" + "&password=" + "postgres";
         //The answer list
         List <Subject> subjects = new ArrayList<Subject>();
         //The connecion variable
@@ -45,7 +41,7 @@ public class TutorSearch {
         String query = "SELECT * FROM materia";
         try{
             //Connects to the DB
-            conn = DriverManager.getConnection(url, props);
+            conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             //Executes the query
             ResultSet rs = stmt.executeQuery(query);
@@ -65,17 +61,15 @@ public class TutorSearch {
         return subjects;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     //Sets url to localhost:8080/API/busqueda/{name}
     //Where {name} is the code for the desired sbject
     //The code for every subject is specified in the file SubjectData.sql
     @GetMapping("/busqueda/{subject}")
     //Returns a list of all tutors registered in the DB with that subject
     public List<Tutor> getTutors(@PathVariable String subject){
-        String url = "jdbc:postgresql://127.0.0.1/TEL_DB";
-        Properties props = new Properties();
-        props.setProperty("user","postgres");
-        props.setProperty("password","postgres");
+        String url = "jdbc:postgresql://ingsoft.coegv0vravum.us-east-2.rds.amazonaws.com:5432/TEL_DB";
+        url += "?user=" + "postgres" + "&password=" + "postgres";
         List <Tutor> tutors = new ArrayList<Tutor>();
         Connection conn;
         String query = "SELECT nombre, apellido, correo, telf FROM tutor t,materia_tutor m WHERE t.nom_usu=m.nom_usu AND '";
@@ -83,7 +77,7 @@ public class TutorSearch {
         query += subject;
         query += "'= m.codmat";
         try{
-            conn = DriverManager.getConnection(url, props);
+            conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {

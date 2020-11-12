@@ -25,19 +25,15 @@ import java.sql.Statement;
 public class TutorRegistration {
     
     //Allows localhost:3000 to GET and POST
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     //Sets url to localhost:8080/API/busquedaCorreo/{mail}
     //Where {mail} is the mail we want to verify in not registered already
     @GetMapping("/busquedaCorreo/{emailSearch}")
     //Return a boolean telling if the mail already exists in the DB or not
     public boolean getExistenceEmail(@PathVariable String emailSearch){
         //url for TEL_DB DataBase
-        String url = "jdbc:postgresql://127.0.0.1/TEL_DB";
-        Properties props = new Properties();
-        //Sets the DB user
-        props.setProperty("user","postgres");
-        //Sets the DB psssword
-        props.setProperty("password","postgres");
+        String url = "jdbc:postgresql://ingsoft.coegv0vravum.us-east-2.rds.amazonaws.com:5432/TEL_DB";
+        url += "?user=" + "postgres" + "&password=" + "postgres";
         //The answer boolean
         boolean exists = false;
         //The connecion variable
@@ -46,7 +42,7 @@ public class TutorRegistration {
         String query = "SELECT Count(*) as cant FROM tutor WHERE correo='"+emailSearch+"'";
         try{
             //Connects to the DB
-            conn = DriverManager.getConnection(url, props);
+            conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             //Executes the query
             ResultSet rs = stmt.executeQuery(query);
@@ -65,20 +61,18 @@ public class TutorRegistration {
     }
 
     //Allows localhost:3000 to GET and POST
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     //Sets url to localhost:8080/API/busquedaNomUsu/{nom}
     //Where {nom} is the username we want to verify in not registered already
     @GetMapping("/busquedaNomUsu/{usernameSearch}")
     public boolean getExistenceUsername(@PathVariable String usernameSearch){
-        String url = "jdbc:postgresql://127.0.0.1/TEL_DB";
-        Properties props = new Properties();
-        props.setProperty("user","postgres");
-        props.setProperty("password","postgres");
+        String url = "jdbc:postgresql://ingsoft.coegv0vravum.us-east-2.rds.amazonaws.com:5432/TEL_DB";
+        url += "?user=" + "postgres" + "&password=" + "postgres";
         boolean exists = false;
         Connection conn;
         String query = "SELECT Count(*) as cant FROM tutor WHERE nom_usu='"+usernameSearch+"'";
         try{
-            conn = DriverManager.getConnection(url, props);
+            conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             int resp=-1;
@@ -94,16 +88,14 @@ public class TutorRegistration {
     }
 
     //Allows localhost:3000 to GET and POST
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin
     //Sets url to localhost:8080/API/registrar
     @PostMapping("/registrar")
     //Gets a Json file, turns it into a Tutor object called t, validates it and inserts it into the DB
     public int registerTutor(@RequestBody Tutor t){
         int register=0;
-        String url = "jdbc:postgresql://127.0.0.1/TEL_DB";
-        Properties props = new Properties();
-        props.setProperty("user","postgres");
-        props.setProperty("password","postgres");
+        String url = "jdbc:postgresql://ingsoft.coegv0vravum.us-east-2.rds.amazonaws.com:5432/TEL_DB";
+        url += "?user=" + "postgres" + "&password=" + "postgres";
         Connection conn;
         String query = "INSERT INTO tutor VALUES ('";
         query+=t.name+"','";
@@ -113,7 +105,7 @@ public class TutorRegistration {
         query+=t.username+"','";
         query+=t.password2+"')";
         try{
-            conn = DriverManager.getConnection(url, props);
+            conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();
             //Validates tutor data
             register = validTutor(t);
