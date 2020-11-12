@@ -1,0 +1,45 @@
+.search-menu {
+    background:black;
+    width: 180px;
+    position: absolute;
+    top: 70px;
+    list-style: none;
+    text-align: start;
+    text-decoration: none;
+  
+  }
+  
+  .search-menu li {
+    background:#C38346;
+    cursor: pointer;
+    text-decoration: none;
+
+  }
+  
+  .search-menu li:hover {
+    background:#f0b67c;
+    text-decoration: none;
+
+  }
+  
+  .search-menu.clicked {
+    display: none;
+    text-decoration: none;
+   
+  }
+  
+  .dropdown-link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    .fa-caret-down {
+      display: none;
+     
+    }
+  }
