@@ -8,7 +8,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 //definition of the post url 
-const url = "http://localhost:8080/API/registrar";
+const url = "https://tel-deploy.herokuapp.com/API/registrar";
 
 //definition of the password field visibility icon 
 const eye =<FontAwesomeIcon icon = {faEye} />;

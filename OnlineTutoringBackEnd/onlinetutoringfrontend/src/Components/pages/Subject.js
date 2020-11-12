@@ -4,7 +4,7 @@ import Posts from '../Posts';
 import Pagination from '../Pagination';
 import './Subject.css'
 
-const url2 = "http://localhost:8080/API/materias";
+const url2 = "https://tel-deploy.herokuapp.com/API/materias";
 
 export default class Subject extends Component {
   constructor(props){
@@ -40,7 +40,7 @@ export default class Subject extends Component {
       this.setState({posts: []});
       this.setState({currentPage: 1});
     }else{
-      const url1 = 'http://localhost:8080/API/busqueda/' + option;
+      const url1 = 'https://tel-deploy.herokuapp.com/API/busqueda/' + option;
       this.getPosts(url1);
       this.setState({currentPage: 1})
     }
